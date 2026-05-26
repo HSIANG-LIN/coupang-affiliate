@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>酷澎分潤系統 | Coupang Affiliate Hub</title>
+    <title>AI Agent 實戰手冊 | 酷澎分潤系統開發全紀錄</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <style>
@@ -14,436 +14,607 @@
             color: #e0e0e0;
             min-height: 100vh;
             overflow-x: hidden;
+            line-height: 1.7;
         }
 
         /* Hero */
         .hero {
             position: relative;
             text-align: center;
-            padding: 80px 20px 50px;
+            padding: 100px 20px 60px;
             overflow: hidden;
         }
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at 30% 50%, rgba(255,107,53,0.08) 0%, transparent 50%),
-                        radial-gradient(ellipse at 70% 50%, rgba(247,201,72,0.06) 0%, transparent 50%);
-            animation: drift 20s ease-in-out infinite alternate;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(ellipse at 30% 40%, rgba(99,102,241,0.1) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 60%, rgba(247,201,72,0.06) 0%, transparent 50%);
+            animation: drift 25s ease-in-out infinite alternate;
         }
         @keyframes drift {
             0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(-5%, 3%) rotate(2deg); }
+            100% { transform: translate(-3%, 2%) rotate(1.5deg); }
+        }
+        .hero-badge {
+            position: relative;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            background: rgba(99,102,241,0.15);
+            color: #818cf8;
+            border: 1px solid rgba(99,102,241,0.3);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
         }
         .hero h1 {
             position: relative;
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #ff6b35, #f7c948, #ff6b35);
-            background-size: 200% auto;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .hero h1 em {
+            font-style: normal;
+            background: linear-gradient(135deg, #818cf8, #c084fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: shimmer 3s linear infinite;
-            margin-bottom: 8px;
         }
-        @keyframes shimmer {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
-        }
-        .hero p {
+        .hero-sub {
             position: relative;
             color: #888;
-            font-size: 1.1rem;
-            margin-top: 4px;
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* Status Bar */
-        .status-bar {
+        /* Stats bar */
+        .stats-bar {
             display: flex;
             justify-content: center;
-            gap: 28px;
-            padding: 18px;
+            gap: 40px;
+            padding: 24px;
             background: #111;
+            border-top: 1px solid #1a1a1a;
             border-bottom: 1px solid #1a1a1a;
             flex-wrap: wrap;
         }
-        .status-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            color: #888;
+        .stat {
+            text-align: center;
         }
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #4ade80;
-            box-shadow: 0 0 8px #4ade80;
-            animation: pulse 2s infinite;
+        .stat-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 4px #4ade80; }
-            50% { box-shadow: 0 0 12px #4ade80, 0 0 20px rgba(74,222,128,0.3); }
+        .stat-label {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 2px;
         }
 
         /* Container */
         .container {
-            max-width: 1000px;
+            max-width: 960px;
             margin: 0 auto;
-            padding: 40px 20px;
-        }
-        .section-title {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #555;
-            margin-bottom: 20px;
+            padding: 60px 20px;
         }
 
-        /* Grid */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
-            margin-bottom: 48px;
+        /* Intro */
+        .intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .intro h2 {
+            font-size: 1.6rem;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .intro p {
+            color: #888;
+            max-width: 640px;
+            margin: 0 auto;
+            font-size: 0.95rem;
         }
 
-        /* Card */
-        .card {
-            background: #141414;
-            border: 1px solid #1e1e1e;
-            border-radius: 16px;
-            padding: 28px;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            position: relative;
-            overflow: hidden;
+        /* Section header */
+        .section-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
         }
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 3px;
-            background: linear-gradient(90deg, #ff6b35, #f7c948);
-            opacity: 0;
-            transition: opacity 0.3s;
+        .section-num {
+            width: 32px; height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #818cf8, #6366f1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
         }
-        .card:hover::before { opacity: 1; }
-        .card:hover {
-            border-color: #333;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
-        }
-        .card-icon {
-            font-size: 2.2rem;
-            margin-bottom: 14px;
-        }
-        .card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 6px;
+        .section-head h2 {
+            font-size: 1.3rem;
             color: #fff;
         }
-        .card p {
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #222, transparent);
+            margin: 48px 0;
+        }
+
+        /* Capability cards */
+        .cap-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        @media (max-width: 640px) {
+            .cap-grid { grid-template-columns: 1fr; }
+        }
+        .cap-card {
+            background: #141414;
+            border: 1px solid #1e1e1e;
+            border-radius: 14px;
+            padding: 24px;
+            transition: border-color 0.3s;
+        }
+        .cap-card:hover {
+            border-color: #333;
+        }
+        .cap-icon {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+        .cap-card h4 {
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .cap-card p {
             font-size: 0.85rem;
             color: #888;
             line-height: 1.6;
         }
-        .card-tag {
+        .cap-code {
             display: inline-block;
-            margin-top: 14px;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
+            margin-top: 10px;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.72rem;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            background: #1a1a2e;
+            color: #818cf8;
         }
-        .tag-auto { background: #1a2e1a; color: #4ade80; }
-        .tag-tool { background: #1a1a2e; color: #60a5fa; }
 
-        /* Schedule */
-        .schedule {
+        /* Flow diagram */
+        .flow {
             background: #141414;
             border: 1px solid #1e1e1e;
-            border-radius: 16px;
-            padding: 28px;
-            margin-bottom: 48px;
+            border-radius: 14px;
+            padding: 32px;
+            margin-bottom: 32px;
         }
-        .schedule h3 {
-            margin-bottom: 20px;
-            color: #fff;
+        .flow h3 {
             font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 20px;
         }
-        .schedule-row {
+        .flow-steps {
             display: flex;
             align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #1a1a1a;
-            gap: 16px;
-        }
-        .schedule-row:last-child { border-bottom: none; }
-        .schedule-time {
-            font-family: 'SF Mono', 'Fira Code', monospace;
-            font-size: 0.85rem;
-            color: #ff6b35;
-            min-width: 110px;
-            font-weight: 600;
-        }
-        .schedule-name {
-            font-size: 0.9rem;
-            color: #ccc;
-        }
-        .schedule-desc {
-            font-size: 0.8rem;
-            color: #555;
-            margin-left: auto;
-        }
-
-        /* Tech */
-        .tech-grid {
-            background: #141414;
-            border: 1px solid #1e1e1e;
-            border-radius: 16px;
-            padding: 28px;
-            margin-bottom: 48px;
-        }
-        .tech-grid h3 {
-            margin-bottom: 16px;
-            color: #fff;
-            font-size: 1.1rem;
-        }
-        .tech-grid p {
-            line-height: 1.8;
-            color: #aaa;
-            font-size: 0.9rem;
-        }
-        .tech-grid strong { color: #ddd; }
-        .tech {
-            display: flex;
             gap: 8px;
             flex-wrap: wrap;
-            margin-top: 16px;
+            justify-content: center;
         }
-        .tech-badge {
-            padding: 5px 12px;
-            border-radius: 8px;
+        .flow-step {
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .flow-arrow {
+            color: #444;
+            font-size: 1.2rem;
+        }
+        .step-blue { background: rgba(99,102,241,0.15); color: #818cf8; border: 1px solid rgba(99,102,241,0.3); }
+        .step-green { background: rgba(74,222,128,0.12); color: #4ade80; border: 1px solid rgba(74,222,128,0.25); }
+        .step-orange { background: rgba(255,107,53,0.12); color: #ff6b35; border: 1px solid rgba(255,107,53,0.25); }
+        .step-purple { background: rgba(192,132,252,0.12); color: #c084fc; border: 1px solid rgba(192,132,252,0.25); }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 32px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 6px; top: 0; bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #818cf8, #6366f1, transparent);
+        }
+        .tl-item {
+            position: relative;
+            padding: 16px 0;
+        }
+        .tl-item::before {
+            content: '';
+            position: absolute;
+            left: -25px; top: 22px;
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: #818cf8;
+            box-shadow: 0 0 8px rgba(129,140,248,0.4);
+        }
+        .tl-time {
             font-size: 0.72rem;
-            background: #1a1a1a;
-            color: #999;
-            border: 1px solid #252525;
-            transition: all 0.2s;
+            color: #6366f1;
+            font-weight: 600;
+            margin-bottom: 4px;
         }
-        .tech-badge:hover {
-            border-color: #ff6b35;
-            color: #ff6b35;
+        .tl-title {
+            font-size: 0.95rem;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .tl-desc {
+            font-size: 0.82rem;
+            color: #777;
+        }
+
+        /* Quote */
+        .quote-box {
+            background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(192,132,252,0.05));
+            border: 1px solid rgba(99,102,241,0.2);
+            border-radius: 14px;
+            padding: 28px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        .quote-box p {
+            font-size: 1.05rem;
+            color: #ccc;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .quote-box .author {
+            margin-top: 12px;
+            font-size: 0.8rem;
+            color: #666;
+            font-style: normal;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 30px;
+            padding: 40px 20px;
             color: #333;
             font-size: 0.8rem;
             border-top: 1px solid #151515;
         }
+        footer a {
+            color: #818cf8;
+            text-decoration: none;
+        }
 
-        /* GSAP init states */
-        .gsap-init { opacity: 0; }
+        /* GSAP */
+        .gs-init { opacity: 0; }
     </style>
 </head>
 <body>
 
+<!-- ═══ HERO ═══ -->
 <div class="hero">
-    <h1>🔥 酷澎分潤系統</h1>
-    <p>Coupang Affiliate Automation Hub</p>
+    <div class="hero-badge gs-init">AI AGENT 實戰手冊</div>
+    <h1 class="gs-init">用 AI Agent 做了<br>一個<em>全自動 affiliate 系統</em></h1>
+    <p class="hero-sub gs-init">
+        從零開始，一個人 + 一個 AI Agent，<br>
+        花兩天打造出完整自動化分潤系統。<br>
+        以下是過程中用到的 AI Agent 核心能力。
+    </p>
 </div>
 
-<div class="status-bar">
-    <div class="status-item">
-        <div class="status-dot"></div>
-        全自動運行中
-    </div>
-    <div class="status-item">📊 追蹤 20+ 商品</div>
-    <div class="status-item">⚡ 4 個 Cron Job</div>
-    <div class="status-item">🔗 4 平台比價</div>
+<!-- ═══ STATS ═══ -->
+<div class="stats-bar">
+    <div class="stat gs-init"><div class="stat-num">20+</div><div class="stat-label">支 Python 腳本</div></div>
+    <div class="stat gs-init"><div class="stat-num">4</div><div class="stat-label">個自動化排程</div></div>
+    <div class="stat gs-init"><div class="stat-num">4</div><div class="stat-label">個平台比價</div></div>
+    <div class="stat gs-init"><div class="stat-num">0</div><div class="stat-label">Token 消耗（排程）</div></div>
+    <div class="stat gs-init"><div class="stat-num">2</div><div class="stat-label">天完成開發</div></div>
 </div>
 
 <div class="container">
 
-    <div class="section-title gsap-init">功能入口</div>
-    <div class="grid">
-        <a class="card gsap-init" href="http://localhost:8512" target="_blank">
-            <div class="card-icon">📊</div>
-            <h3>Dashboard</h3>
-            <p>金盒子特價・商品搜尋・文案產生・價格追蹤・跨平台比價・價格歷史・分潤報表</p>
-            <span class="card-tag tag-tool">開啟 Dashboard →</span>
-        </a>
-
-        <div class="card gsap-init">
-            <div class="card-icon">⚖️</div>
-            <h3>跨平台比價</h3>
-            <p>即時比價 酷澎 / momo / 蝦皮 / PChome，確認當下最低價。支援 Dashboard 操作。</p>
-            <span class="card-tag tag-auto">Dashboard 內使用</span>
-        </div>
-
-        <div class="card gsap-init">
-            <div class="card-icon">🔥</div>
-            <h3>每日好康速報</h3>
-            <p>每天自動比 10 個熱門品項（衛生紙、洗衣膠囊、垃圾袋...），有便宜才推播。</p>
-            <span class="card-tag tag-auto">每日 09:00 自動</span>
-        </div>
-
-        <div class="card gsap-init">
-            <div class="card-icon">🎯</div>
-            <h3>自動價格掃描</h3>
-            <p>每天掃金盒子 + 追蹤商品，價格跌到歷史低點自動推播 + 生成 Threads 文案。</p>
-            <span class="card-tag tag-auto">每日 08:00 自動</span>
-        </div>
-
-        <div class="card gsap-init">
-            <div class="card-icon">🔍</div>
-            <h3>高佣商品挖掘</h3>
-            <p>掃描 25 個關鍵字，找出高分潤率消耗品。分數 ≥ 7 自動加入追蹤清單。</p>
-            <span class="card-tag tag-auto">每週日 21:00 自動</span>
-        </div>
-
-        <div class="card gsap-init">
-            <div class="card-icon">📈</div>
-            <h3>每週總結</h3>
-            <p>追蹤商品價格變化、歷史低點、新挖掘商品、比價統計，一目了然。</p>
-            <span class="card-tag tag-auto">每週日 20:00 自動</span>
-        </div>
-    </div>
-
-    <div class="section-title gsap-init">自動化排程</div>
-    <div class="schedule gsap-init">
-        <h3>⏰ Cron Jobs</h3>
-        <div class="schedule-row">
-            <span class="schedule-time">08:00 每天</span>
-            <span class="schedule-name">🎯 自動價格掃描</span>
-            <span class="schedule-desc">金盒子 + 追蹤商品 + 低點警示 + Threads 文案</span>
-        </div>
-        <div class="schedule-row">
-            <span class="schedule-time">09:00 每天</span>
-            <span class="schedule-name">🔥 每日好康速報</span>
-            <span class="schedule-desc">跨平台比價 10 品項，便宜才推播</span>
-        </div>
-        <div class="schedule-row">
-            <span class="schedule-time">20:00 週日</span>
-            <span class="schedule-name">📈 每週總結</span>
-            <span class="schedule-desc">價格變化 + 低點 + 新挖掘 + 比價統計</span>
-        </div>
-        <div class="schedule-row">
-            <span class="schedule-time">21:00 週日</span>
-            <span class="schedule-name">🔍 高佣商品挖掘</span>
-            <span class="schedule-desc">掃 25 關鍵字 + 自動追蹤高分商品</span>
-        </div>
-    </div>
-
-    <div class="section-title gsap-init">技術架構</div>
-    <div class="tech-grid gsap-init">
-        <h3>系統架構</h3>
+    <!-- ═══ INTRO ═══ -->
+    <div class="intro gs-init">
+        <h2>為什麼做這個？</h2>
         <p>
-            <strong>資料來源：</strong>Coupang Partners API・momo JSON-LD・Shopee/PChome Playwright 瀏覽器<br>
-            <strong>排程：</strong>Hermes Agent Cron (no_agent, 零 token)<br>
-            <strong>推播：</strong>Telegram 即時通知<br>
-            <strong>視覺化：</strong>Streamlit Dashboard (port 8512)<br>
-            <strong>文案：</strong>自動生成 Simon 風格 Threads 貼文
+            我兒子在打乒乓球，老婆在上班，我想找個方式增加被動收入。
+            研究了酷澎（Coupang）的分潤計畫後，決定用 AI Agent 來打造一套自動化系統——
+            從 API 串接、比價引擎、價格追蹤、文案生成到部署上線，全程由 AI Agent 協助完成。
         </p>
-        <div class="tech">
-            <span class="tech-badge">Python 3</span>
-            <span class="tech-badge">Coupang Partners API</span>
-            <span class="tech-badge">Playwright</span>
-            <span class="tech-badge">Streamlit</span>
-            <span class="tech-badge">Hermes Agent</span>
-            <span class="tech-badge">Telegram Bot</span>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ 1. API Integration ═══ -->
+    <div class="section-head gs-init">
+        <div class="section-num">1</div>
+        <h2>API 串接與鑑權</h2>
+    </div>
+    <div class="cap-grid">
+        <div class="cap-card gs-init">
+            <div class="cap-icon">🔐</div>
+            <h4>HMAC-SHA256 簽章</h4>
+            <p>Coupang API 需要 HMAC 簽章認證。AI Agent 自己讀文件、寫簽章邏輯、debug 簽章路徑問題（必須包含完整 API path），最終成功串接。</p>
+            <span class="cap-code">coupang_api.py</span>
         </div>
+        <div class="cap-card gs-init">
+            <div class="cap-icon">🌐</div>
+            <h4>多平台資料抓取</h4>
+            <p>momo 用 JSON-LD 解析、蝦皮/PChome 用 Playwright 瀏覽器自動化。四個平台，三種抓取策略，AI Agent 自動選擇最佳方案。</p>
+            <span class="cap-code">coupang_compare.py</span>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ 2. Automation ═══ -->
+    <div class="section-head gs-init">
+        <div class="section-num">2</div>
+        <h2>自動化排程（Zero Token）</h2>
+    </div>
+    <div class="cap-grid">
+        <div class="cap-card gs-init">
+            <div class="cap-icon">⏰</div>
+            <h4>Cron Job 管理</h4>
+            <p>AI Agent 幫忙建立、排程、除錯所有 cron jobs。排程用 <code>no_agent=True</code> 模式，純腳本執行零 token 消耗。</p>
+            <span class="cap-code">no_agent=True → 零成本</span>
+        </div>
+        <div class="cap-card gs-init">
+            <div class="cap-icon">🔄</div>
+            <h4>失敗自動重試</h4>
+            <p>資料抓取失敗時自動 retry，API rate limit 時自動退避。AI Agent 會設計容錯機制，不是只寫 happy path。</p>
+            <span class="cap-code">retry loop + exponential backoff</span>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ 3. Data Pipeline ═══ -->
+    <div class="section-head gs-init">
+        <div class="section-num">3</div>
+        <h2>資料管線與分析</h2>
+    </div>
+    <div class="cap-grid">
+        <div class="cap-card gs-init">
+            <div class="cap-icon">📊</div>
+            <h4>歷史價格追蹤</h4>
+            <p>每次掃描自動記錄價格，建立歷史資料庫。跌到歷史低點時自動觸發推播——AI Agent 會設計「什麼時候該通知人」。</p>
+            <span class="cap-code">price_history.json</span>
+        </div>
+        <div class="cap-card gs-init">
+            <div class="cap-icon">⚖️</div>
+            <h4>跨平台比價引擎</h4>
+            <p>同一商品同時比 4 個平台，找最低價。AI Agent 不只做資料抓取，還做了「決策邏輯」——什麼時候該推、什麼時候該等。</p>
+            <span class="cap-code">coupang_compare.py</span>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ 4. Content Generation ═══ -->
+    <div class="section-head gs-init">
+        <div class="section-num">4</div>
+        <h2>內容生成</h2>
+    </div>
+    <div class="cap-grid">
+        <div class="cap-card gs-init">
+            <div class="cap-icon">✍️</div>
+            <h4>Threads 文案自動生成</h4>
+            <p>價格低點時自動生成 Simon 風格的 Threads 貼文：短句、生活場景、無驚嘆號、無 emoji。AI Agent 學習你的語氣，不是萬用模板。</p>
+            <span class="cap-code">generate_threads_post()</span>
+        </div>
+        <div class="cap-card gs-init">
+            <div class="cap-icon">🎯</div>
+            <h4>智能商品挖掘</h4>
+            <p>掃描 25 個關鍵字，用分數系統篩選高價值商品。≥ 7 分自動追蹤——AI Agent 幫你做「什麼值得推」的判斷。</p>
+            <span class="cap-code">coupang_discover.py</span>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ 5. Deployment ═══ -->
+    <div class="section-head gs-init">
+        <div class="section-num">5</div>
+        <h2>部署與展示</h2>
+    </div>
+    <div class="cap-grid">
+        <div class="cap-card gs-init">
+            <div class="cap-icon">🖥️</div>
+            <h4>Dashboard 視覺化</h4>
+            <p>Streamlit Dashboard 7 個頁面，整合金盒子、搜尋、文案、追蹤、比價、歷史、報表。AI Agent 從零建出完整 UI。</p>
+            <span class="cap-code">streamlit run → port 8512</span>
+        </div>
+        <div class="cap-card gs-init">
+            <div class="cap-icon">🚀</div>
+            <h4>GitHub Pages 部署</h4>
+            <p>自動建 repo、設定 Pages、推代碼。一個指令搞定，不用自己記 git 操作。</p>
+            <span class="cap-code">github.com/HSIANG-LIN/coupang-affiliate</span>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ 6. Frontend ═══ -->
+    <div class="section-head gs-init">
+        <div class="section-num">6</div>
+        <h2>前端動態效果</h2>
+    </div>
+    <div class="cap-grid">
+        <div class="cap-card gs-init">
+            <div class="cap-icon">✨</div>
+            <h4>GSAP 動畫整合</h4>
+            <p>用 GSAP ScrollTrigger 做 scroll 入場動畫、卡片瀑布、shimmer 光效。AI Agent 學會動畫庫的 API，直接寫出可生產用的前端。</p>
+            <span class="cap-code">gsap.from() + ScrollTrigger</span>
+        </div>
+        <div class="cap-card gs-init">
+            <div class="cap-icon">🎨</div>
+            <h4>響應式設計</h4>
+            <p>深色主題、mobile-ready、hover 互動效果。AI Agent 不只寫功能，也顧及使用者體驗。</p>
+            <span class="cap-code">dark mode + responsive</span>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ WORKFLOW ═══ -->
+    <div class="section-head gs-init">
+        <div class="section-num">⚡</div>
+        <h2>完整工作流程</h2>
+    </div>
+    <div class="flow gs-init">
+        <h3>從需求到上線，AI Agent 做了什麼</h3>
+        <div class="flow-steps">
+            <span class="flow-step step-blue">📄 讀 API 文件</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step step-blue">🔐 寫 HMAC 簽章</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step step-green">🔍 串接 API</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step step-green">📊 建比價引擎</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step step-orange">⏰ 設 cron 排程</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step step-orange">✍️ 生成文案</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step step-purple">🖥️ 建 Dashboard</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step step-purple">🚀 部署上線</span>
+        </div>
+    </div>
+
+    <!-- ═══ TIMELINE ═══ -->
+    <div class="flow gs-init">
+        <h3>開發時間線</h3>
+        <div class="timeline">
+            <div class="tl-item gs-init">
+                <div class="tl-time">Day 1 — 上午</div>
+                <div class="tl-title">API 研究 + 串接</div>
+                <div class="tl-desc">讀 Coupang API 文件，寫 HMAC 簽章，debug 簽章路徑問題，成功拿到 goldbox 資料</div>
+            </div>
+            <div class="tl-item gs-init">
+                <div class="tl-time">Day 1 — 下午</div>
+                <div class="tl-title">比價引擎 + 價格追蹤</div>
+                <div class="tl-desc">建跨平台比價引擎（Coupang/momo/蝦皮/PChome），設計歷史價格追蹤系統</div>
+            </div>
+            <div class="tl-item gs-init">
+                <div class="tl-time">Day 1 — 晚上</div>
+                <div class="tl-title">自動化排程 + 文案生成</div>
+                <div class="tl-desc">建立 4 個 cron job，寫 Threads 文案生成器，設定 Telegram 推播</div>
+            </div>
+            <div class="tl-item gs-init">
+                <div class="tl-time">Day 2 — 上午</div>
+                <div class="tl-title">Dashboard + 部署</div>
+                <div class="tl-desc">建 Streamlit Dashboard（7 頁），推上 GitHub，開 GitHub Pages</div>
+            </div>
+            <div class="tl-item gs-init">
+                <div class="tl-time">Day 2 — 下午</div>
+                <div class="tl-title">GSAP 美化 + 上線</div>
+                <div class="tl-desc">用 GSAP 做 landing page 動態效果，完成部署，系統正式運行</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ QUOTE ═══ -->
+    <div class="quote-box gs-init">
+        <p>「AI Agent 不是幫你寫程式，是幫你把想法變成可運行的系統。」</p>
+        <div class="author">— 用 Hermes Agent 打造酷澎分潤系統的心得</div>
     </div>
 
 </div>
 
 <footer>
-    酷澎分潤自動化系統 · Coupang Affiliate ID: AF1508181 · Built with Hermes Agent
+    酷澎分潤自動化系統 · Built with <a href="https://hermes-agent.nousresearch.com">Hermes Agent</a> · Coupang Affiliate ID: AF1508181
 </footer>
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-// Hero entrance
-gsap.from(".hero h1", {
-    y: 40, autoAlpha: 0, duration: 1, ease: "power3.out"
-});
-gsap.from(".hero p", {
-    y: 20, autoAlpha: 0, duration: 0.8, delay: 0.3, ease: "power3.out"
+// Hero
+gsap.from(".hero-badge", { y: 20, autoAlpha: 0, duration: 0.8, ease: "power3.out" });
+gsap.from(".hero h1", { y: 40, autoAlpha: 0, duration: 1, delay: 0.15, ease: "power3.out" });
+gsap.from(".hero-sub", { y: 20, autoAlpha: 0, duration: 0.8, delay: 0.4, ease: "power3.out" });
+
+// Stats
+gsap.from(".stat", {
+    y: 20, autoAlpha: 0, duration: 0.6,
+    stagger: 0.1, ease: "power2.out", delay: 0.6
 });
 
-// Status bar items stagger
-gsap.from(".status-item", {
-    y: 15, autoAlpha: 0, duration: 0.6,
-    stagger: 0.1, ease: "power2.out", delay: 0.5
+// Intro
+gsap.from(".intro", {
+    scrollTrigger: { trigger: ".intro", start: "top 85%" },
+    y: 30, autoAlpha: 0, duration: 0.8, ease: "power3.out"
 });
 
-// Section titles fade in
-gsap.utils.toArray(".section-title").forEach(el => {
+// Section heads
+gsap.utils.toArray(".section-head").forEach(el => {
     gsap.from(el, {
-        scrollTrigger: { trigger: el, start: "top 90%" },
-        x: -30, autoAlpha: 0, duration: 0.6, ease: "power2.out"
+        scrollTrigger: { trigger: el, start: "top 88%" },
+        x: -20, autoAlpha: 0, duration: 0.6, ease: "power2.out"
     });
 });
 
-// Cards waterfall on scroll
-gsap.utils.toArray(".card").forEach((card, i) => {
+// Capability cards waterfall
+gsap.utils.toArray(".cap-card").forEach((card, i) => {
     gsap.from(card, {
-        scrollTrigger: {
-            trigger: card,
-            start: "top 92%",
-        },
-        y: 50,
-        autoAlpha: 0,
-        duration: 0.7,
-        delay: (i % 3) * 0.12,
-        ease: "power3.out"
+        scrollTrigger: { trigger: card, start: "top 92%" },
+        y: 40, autoAlpha: 0, duration: 0.7,
+        delay: (i % 2) * 0.15, ease: "power3.out"
     });
 });
 
-// Schedule rows slide in
-gsap.from(".schedule-row", {
-    scrollTrigger: { trigger: ".schedule", start: "top 85%" },
-    x: -30, autoAlpha: 0, duration: 0.5,
-    stagger: 0.1, ease: "power2.out"
-});
-
-// Tech grid
-gsap.from(".tech-grid", {
-    scrollTrigger: { trigger: ".tech-grid", start: "top 88%" },
+// Flow diagram
+gsap.from(".flow", {
+    scrollTrigger: { trigger: ".flow", start: "top 85%" },
     y: 40, autoAlpha: 0, duration: 0.8, ease: "power3.out"
 });
 
-// Tech badges pop
-gsap.from(".tech-badge", {
-    scrollTrigger: { trigger: ".tech-badge", start: "top 95%" },
+// Flow steps pop
+gsap.from(".flow-step", {
+    scrollTrigger: { trigger: ".flow-steps", start: "top 90%" },
     scale: 0.8, autoAlpha: 0, duration: 0.4,
-    stagger: 0.06, ease: "back.out(1.7)"
+    stagger: 0.08, ease: "back.out(1.7)"
 });
 
-// KPI counter animation for status bar numbers
-function animateKPI(el, target, suffix) {
-    gsap.fromTo(el,
-        { textContent: 0 },
-        {
-            textContent: target,
-            duration: 1.5,
-            delay: 0.8,
-            ease: "power2.out",
-            snap: { textContent: 1 },
-            onUpdate: function() {
-                el.textContent = Math.round(parseFloat(el.textContent)) + suffix;
-            }
-        }
-    );
-}
+// Timeline items
+gsap.utils.toArray(".tl-item").forEach((item, i) => {
+    gsap.from(item, {
+        scrollTrigger: { trigger: item, start: "top 90%" },
+        x: -20, autoAlpha: 0, duration: 0.6,
+        delay: i * 0.1, ease: "power2.out"
+    });
+});
+
+// Quote
+gsap.from(".quote-box", {
+    scrollTrigger: { trigger: ".quote-box", start: "top 85%" },
+    y: 30, autoAlpha: 0, duration: 0.8, ease: "power3.out"
+});
 </script>
 
 </body>
