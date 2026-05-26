@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent 實戰手冊 | 酷澎分潤系統開發全紀錄</title>
+    <title>AI Agent 實戰手冊 | 酷澎分潤系統</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <style>
@@ -17,11 +17,64 @@
             line-height: 1.7;
         }
 
-        /* Hero */
+        /* ─── NAV ─── */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 28px;
+            background: rgba(10,10,10,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .nav-brand {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #fff;
+        }
+        .nav-brand em {
+            font-style: normal;
+            background: linear-gradient(135deg, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 6px;
+        }
+        .nav-links a {
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .nav-links a:hover {
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .nav-links a.active {
+            background: rgba(99,102,241,0.15);
+            color: #818cf8;
+        }
+        .nav-links a.launch {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #fff;
+            font-weight: 600;
+        }
+        .nav-links a.launch:hover {
+            box-shadow: 0 4px 16px rgba(99,102,241,0.3);
+        }
+
+        /* ─── HERO ─── */
         .hero {
             position: relative;
             text-align: center;
-            padding: 100px 20px 60px;
+            padding: 80px 20px 50px;
             overflow: hidden;
         }
         .hero::before {
@@ -29,29 +82,29 @@
             position: absolute;
             top: -50%; left: -50%;
             width: 200%; height: 200%;
-            background: radial-gradient(ellipse at 30% 40%, rgba(99,102,241,0.1) 0%, transparent 50%),
-                        radial-gradient(ellipse at 70% 60%, rgba(247,201,72,0.06) 0%, transparent 50%);
+            background: radial-gradient(ellipse at 30% 40%, rgba(99,102,241,0.08) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 60%, rgba(247,201,72,0.05) 0%, transparent 50%);
             animation: drift 25s ease-in-out infinite alternate;
         }
         @keyframes drift {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(-3%, 2%) rotate(1.5deg); }
+            0% { transform: translate(0,0) rotate(0deg); }
+            100% { transform: translate(-3%,2%) rotate(1.5deg); }
         }
         .hero-badge {
             position: relative;
             display: inline-block;
             padding: 6px 16px;
             border-radius: 20px;
-            font-size: 0.75rem;
-            background: rgba(99,102,241,0.15);
+            font-size: 0.72rem;
+            background: rgba(99,102,241,0.12);
             color: #818cf8;
-            border: 1px solid rgba(99,102,241,0.3);
+            border: 1px solid rgba(99,102,241,0.25);
             margin-bottom: 20px;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
         .hero h1 {
             position: relative;
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             font-weight: 800;
             color: #fff;
             margin-bottom: 12px;
@@ -65,63 +118,73 @@
         .hero-sub {
             position: relative;
             color: #888;
-            font-size: 1.05rem;
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 1rem;
+            max-width: 560px;
+            margin: 0 auto 28px;
+        }
+        .hero-cta {
+            position: relative;
+            display: inline-flex;
+            gap: 12px;
+        }
+        .btn {
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 6px 24px rgba(99,102,241,0.35);
+            transform: translateY(-1px);
+        }
+        .btn-ghost {
+            background: #1a1a1a;
+            color: #ccc;
+            border: 1px solid #333;
+        }
+        .btn-ghost:hover {
+            border-color: #555;
+            color: #fff;
         }
 
-        /* Stats bar */
+        /* ─── STATS ─── */
         .stats-bar {
             display: flex;
             justify-content: center;
             gap: 40px;
-            padding: 24px;
+            padding: 22px;
             background: #111;
             border-top: 1px solid #1a1a1a;
             border-bottom: 1px solid #1a1a1a;
             flex-wrap: wrap;
         }
-        .stat {
-            text-align: center;
-        }
+        .stat { text-align: center; }
         .stat-num {
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             font-weight: 800;
             background: linear-gradient(135deg, #818cf8, #c084fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .stat-label {
-            font-size: 0.75rem;
-            color: #666;
-            margin-top: 2px;
-        }
+        .stat-label { font-size: 0.72rem; color: #666; margin-top: 2px; }
 
-        /* Container */
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
+        /* ─── CONTAINER ─── */
+        .container { max-width: 960px; margin: 0 auto; padding: 56px 20px; }
 
-        /* Intro */
-        .intro {
-            text-align: center;
-            margin-bottom: 60px;
+        /* ─── SECTION ─── */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #222, transparent);
+            margin: 48px 0;
         }
-        .intro h2 {
-            font-size: 1.6rem;
-            color: #fff;
-            margin-bottom: 12px;
-        }
-        .intro p {
-            color: #888;
-            max-width: 640px;
-            margin: 0 auto;
-            font-size: 0.95rem;
-        }
-
-        /* Section header */
         .section-head {
             display: flex;
             align-items: center;
@@ -129,114 +192,85 @@
             margin-bottom: 24px;
         }
         .section-num {
-            width: 32px; height: 32px;
+            width: 30px; height: 30px;
             border-radius: 8px;
             background: linear-gradient(135deg, #818cf8, #6366f1);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 700;
             color: #fff;
             flex-shrink: 0;
         }
-        .section-head h2 {
-            font-size: 1.3rem;
-            color: #fff;
-        }
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #222, transparent);
-            margin: 48px 0;
-        }
+        .section-head h2 { font-size: 1.2rem; color: #fff; }
 
-        /* Capability cards */
+        /* ─── INTRO ─── */
+        .intro { text-align: center; margin-bottom: 48px; }
+        .intro h2 { font-size: 1.5rem; color: #fff; margin-bottom: 10px; }
+        .intro p { color: #888; max-width: 600px; margin: 0 auto; font-size: 0.92rem; }
+
+        /* ─── CAP CARDS ─── */
         .cap-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 32px;
+            gap: 14px;
+            margin-bottom: 28px;
         }
-        @media (max-width: 640px) {
-            .cap-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 640px) { .cap-grid { grid-template-columns: 1fr; } }
         .cap-card {
             background: #141414;
             border: 1px solid #1e1e1e;
             border-radius: 14px;
-            padding: 24px;
+            padding: 22px;
             transition: border-color 0.3s;
         }
-        .cap-card:hover {
-            border-color: #333;
-        }
-        .cap-icon {
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-        }
-        .cap-card h4 {
-            font-size: 1rem;
-            color: #fff;
-            margin-bottom: 6px;
-        }
-        .cap-card p {
-            font-size: 0.85rem;
-            color: #888;
-            line-height: 1.6;
-        }
+        .cap-card:hover { border-color: #333; }
+        .cap-icon { font-size: 1.5rem; margin-bottom: 8px; }
+        .cap-card h4 { font-size: 0.95rem; color: #fff; margin-bottom: 5px; }
+        .cap-card p { font-size: 0.82rem; color: #888; line-height: 1.6; }
         .cap-code {
             display: inline-block;
-            margin-top: 10px;
+            margin-top: 8px;
             padding: 3px 10px;
             border-radius: 6px;
-            font-size: 0.72rem;
+            font-size: 0.7rem;
             font-family: 'SF Mono', 'Fira Code', monospace;
             background: #1a1a2e;
             color: #818cf8;
         }
 
-        /* Flow diagram */
+        /* ─── FLOW ─── */
         .flow {
             background: #141414;
             border: 1px solid #1e1e1e;
             border-radius: 14px;
-            padding: 32px;
-            margin-bottom: 32px;
+            padding: 28px;
+            margin-bottom: 28px;
         }
-        .flow h3 {
-            font-size: 1.1rem;
-            color: #fff;
-            margin-bottom: 20px;
-        }
+        .flow h3 { font-size: 1.05rem; color: #fff; margin-bottom: 18px; }
         .flow-steps {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
             justify-content: center;
         }
         .flow-step {
-            padding: 10px 16px;
-            border-radius: 10px;
-            font-size: 0.82rem;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.78rem;
             font-weight: 600;
             white-space: nowrap;
         }
-        .flow-arrow {
-            color: #444;
-            font-size: 1.2rem;
-        }
-        .step-blue { background: rgba(99,102,241,0.15); color: #818cf8; border: 1px solid rgba(99,102,241,0.3); }
-        .step-green { background: rgba(74,222,128,0.12); color: #4ade80; border: 1px solid rgba(74,222,128,0.25); }
-        .step-orange { background: rgba(255,107,53,0.12); color: #ff6b35; border: 1px solid rgba(255,107,53,0.25); }
-        .step-purple { background: rgba(192,132,252,0.12); color: #c084fc; border: 1px solid rgba(192,132,252,0.25); }
+        .flow-arrow { color: #444; font-size: 1.1rem; }
+        .step-blue { background: rgba(99,102,241,0.12); color: #818cf8; border: 1px solid rgba(99,102,241,0.25); }
+        .step-green { background: rgba(74,222,128,0.1); color: #4ade80; border: 1px solid rgba(74,222,128,0.2); }
+        .step-orange { background: rgba(255,107,53,0.1); color: #ff6b35; border: 1px solid rgba(255,107,53,0.2); }
+        .step-purple { background: rgba(192,132,252,0.1); color: #c084fc; border: 1px solid rgba(192,132,252,0.2); }
 
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 28px;
-            margin-bottom: 32px;
-        }
+        /* ─── TIMELINE ─── */
+        .timeline { position: relative; padding-left: 28px; margin-bottom: 28px; }
         .timeline::before {
             content: '';
             position: absolute;
@@ -244,86 +278,133 @@
             width: 2px;
             background: linear-gradient(180deg, #818cf8, #6366f1, transparent);
         }
-        .tl-item {
-            position: relative;
-            padding: 16px 0;
-        }
+        .tl-item { position: relative; padding: 14px 0; }
         .tl-item::before {
             content: '';
             position: absolute;
-            left: -25px; top: 22px;
+            left: -25px; top: 20px;
             width: 10px; height: 10px;
             border-radius: 50%;
             background: #818cf8;
             box-shadow: 0 0 8px rgba(129,140,248,0.4);
         }
-        .tl-time {
-            font-size: 0.72rem;
-            color: #6366f1;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-        .tl-title {
-            font-size: 0.95rem;
-            color: #fff;
-            margin-bottom: 4px;
-        }
-        .tl-desc {
-            font-size: 0.82rem;
-            color: #777;
-        }
+        .tl-time { font-size: 0.7rem; color: #6366f1; font-weight: 600; margin-bottom: 3px; }
+        .tl-title { font-size: 0.92rem; color: #fff; margin-bottom: 3px; }
+        .tl-desc { font-size: 0.8rem; color: #777; }
 
-        /* Quote */
-        .quote-box {
-            background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(192,132,252,0.05));
+        /* ─── LIVE SYSTEM ─── */
+        .live-section {
+            background: linear-gradient(135deg, rgba(99,102,241,0.06), rgba(139,92,246,0.04));
             border: 1px solid rgba(99,102,241,0.2);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 48px 0;
+        }
+        .live-section h2 {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .live-section .live-sub {
+            color: #888;
+            font-size: 0.88rem;
+            margin-bottom: 24px;
+        }
+        .live-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+        .live-card {
+            background: rgba(20,20,20,0.8);
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.25s;
+            display: block;
+        }
+        .live-card:hover {
+            border-color: #818cf8;
+            box-shadow: 0 8px 24px rgba(99,102,241,0.12);
+            transform: translateY(-2px);
+        }
+        .live-card-icon { font-size: 1.8rem; margin-bottom: 10px; }
+        .live-card h4 { font-size: 0.95rem; color: #fff; margin-bottom: 4px; }
+        .live-card p { font-size: 0.78rem; color: #777; line-height: 1.5; }
+        .live-tag {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.65rem;
+            font-weight: 600;
+        }
+        .tag-run { background: rgba(74,222,128,0.12); color: #4ade80; }
+        .tag-auto { background: rgba(255,107,53,0.1); color: #ff6b35; }
+
+        /* ─── QUOTE ─── */
+        .quote-box {
+            background: linear-gradient(135deg, rgba(99,102,241,0.06), rgba(192,132,252,0.04));
+            border: 1px solid rgba(99,102,241,0.18);
             border-radius: 14px;
             padding: 28px;
             margin: 40px 0;
             text-align: center;
         }
         .quote-box p {
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: #ccc;
             font-style: italic;
-            max-width: 600px;
+            max-width: 560px;
             margin: 0 auto;
         }
         .quote-box .author {
-            margin-top: 12px;
-            font-size: 0.8rem;
+            margin-top: 10px;
+            font-size: 0.78rem;
             color: #666;
             font-style: normal;
         }
 
-        /* Footer */
+        /* ─── FOOTER ─── */
         footer {
             text-align: center;
-            padding: 40px 20px;
+            padding: 36px 20px;
             color: #333;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             border-top: 1px solid #151515;
         }
-        footer a {
-            color: #818cf8;
-            text-decoration: none;
-        }
+        footer a { color: #818cf8; text-decoration: none; }
 
-        /* GSAP */
+        /* ─── GSAP ─── */
         .gs-init { opacity: 0; }
     </style>
 </head>
 <body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav">
+    <div class="nav-brand"><em>AI Agent</em> 實戰手冊</div>
+    <div class="nav-links">
+        <a href="#learn" class="active">學到了什麼</a>
+        <a href="#system">系統功能</a>
+        <a href="http://localhost:8512" target="_blank" class="launch">🚀 開啟 Dashboard</a>
+    </div>
+</nav>
 
 <!-- ═══ HERO ═══ -->
 <div class="hero">
     <div class="hero-badge gs-init">AI AGENT 實戰手冊</div>
     <h1 class="gs-init">用 AI Agent 做了<br>一個<em>全自動 affiliate 系統</em></h1>
     <p class="hero-sub gs-init">
-        從零開始，一個人 + 一個 AI Agent，<br>
-        花兩天打造出完整自動化分潤系統。<br>
+        從零開始，一個人 + 一個 AI Agent，花兩天打造出完整自動化分潤系統。<br>
         以下是過程中用到的 AI Agent 核心能力。
     </p>
+    <div class="hero-cta gs-init">
+        <a href="#learn" class="btn btn-primary">📖 看教學</a>
+        <a href="#system" class="btn btn-ghost">⚡ 看系統功能</a>
+    </div>
 </div>
 
 <!-- ═══ STATS ═══ -->
@@ -337,204 +418,251 @@
 
 <div class="container">
 
-    <!-- ═══ INTRO ═══ -->
-    <div class="intro gs-init">
-        <h2>為什麼做這個？</h2>
-        <p>
-            我兒子在打乒乓球，老婆在上班，我想找個方式增加被動收入。
-            研究了酷澎（Coupang）的分潤計畫後，決定用 AI Agent 來打造一套自動化系統——
-            從 API 串接、比價引擎、價格追蹤、文案生成到部署上線，全程由 AI Agent 協助完成。
-        </p>
-    </div>
-
-    <div class="section-divider"></div>
-
-    <!-- ═══ 1. API Integration ═══ -->
-    <div class="section-head gs-init">
-        <div class="section-num">1</div>
-        <h2>API 串接與鑑權</h2>
-    </div>
-    <div class="cap-grid">
-        <div class="cap-card gs-init">
-            <div class="cap-icon">🔐</div>
-            <h4>HMAC-SHA256 簽章</h4>
-            <p>Coupang API 需要 HMAC 簽章認證。AI Agent 自己讀文件、寫簽章邏輯、debug 簽章路徑問題（必須包含完整 API path），最終成功串接。</p>
-            <span class="cap-code">coupang_api.py</span>
+    <!-- ═══ 教學：學到了什麼 ═══ -->
+    <div id="learn">
+        <div class="intro gs-init">
+            <h2>學到了什麼</h2>
+            <p>
+                透過打造酷澎分潤系統，實際體驗了 AI Agent 的 6 大核心能力。
+                每個能力都對應到系統中的具體功能。
+            </p>
         </div>
-        <div class="cap-card gs-init">
-            <div class="cap-icon">🌐</div>
-            <h4>多平台資料抓取</h4>
-            <p>momo 用 JSON-LD 解析、蝦皮/PChome 用 Playwright 瀏覽器自動化。四個平台，三種抓取策略，AI Agent 自動選擇最佳方案。</p>
-            <span class="cap-code">coupang_compare.py</span>
+
+        <!-- 1. API 串接 -->
+        <div class="section-head gs-init">
+            <div class="section-num">1</div>
+            <h2>API 串接與鑑權</h2>
         </div>
-    </div>
-
-    <div class="section-divider"></div>
-
-    <!-- ═══ 2. Automation ═══ -->
-    <div class="section-head gs-init">
-        <div class="section-num">2</div>
-        <h2>自動化排程（Zero Token）</h2>
-    </div>
-    <div class="cap-grid">
-        <div class="cap-card gs-init">
-            <div class="cap-icon">⏰</div>
-            <h4>Cron Job 管理</h4>
-            <p>AI Agent 幫忙建立、排程、除錯所有 cron jobs。排程用 <code>no_agent=True</code> 模式，純腳本執行零 token 消耗。</p>
-            <span class="cap-code">no_agent=True → 零成本</span>
-        </div>
-        <div class="cap-card gs-init">
-            <div class="cap-icon">🔄</div>
-            <h4>失敗自動重試</h4>
-            <p>資料抓取失敗時自動 retry，API rate limit 時自動退避。AI Agent 會設計容錯機制，不是只寫 happy path。</p>
-            <span class="cap-code">retry loop + exponential backoff</span>
-        </div>
-    </div>
-
-    <div class="section-divider"></div>
-
-    <!-- ═══ 3. Data Pipeline ═══ -->
-    <div class="section-head gs-init">
-        <div class="section-num">3</div>
-        <h2>資料管線與分析</h2>
-    </div>
-    <div class="cap-grid">
-        <div class="cap-card gs-init">
-            <div class="cap-icon">📊</div>
-            <h4>歷史價格追蹤</h4>
-            <p>每次掃描自動記錄價格，建立歷史資料庫。跌到歷史低點時自動觸發推播——AI Agent 會設計「什麼時候該通知人」。</p>
-            <span class="cap-code">price_history.json</span>
-        </div>
-        <div class="cap-card gs-init">
-            <div class="cap-icon">⚖️</div>
-            <h4>跨平台比價引擎</h4>
-            <p>同一商品同時比 4 個平台，找最低價。AI Agent 不只做資料抓取，還做了「決策邏輯」——什麼時候該推、什麼時候該等。</p>
-            <span class="cap-code">coupang_compare.py</span>
-        </div>
-    </div>
-
-    <div class="section-divider"></div>
-
-    <!-- ═══ 4. Content Generation ═══ -->
-    <div class="section-head gs-init">
-        <div class="section-num">4</div>
-        <h2>內容生成</h2>
-    </div>
-    <div class="cap-grid">
-        <div class="cap-card gs-init">
-            <div class="cap-icon">✍️</div>
-            <h4>Threads 文案自動生成</h4>
-            <p>價格低點時自動生成 Simon 風格的 Threads 貼文：短句、生活場景、無驚嘆號、無 emoji。AI Agent 學習你的語氣，不是萬用模板。</p>
-            <span class="cap-code">generate_threads_post()</span>
-        </div>
-        <div class="cap-card gs-init">
-            <div class="cap-icon">🎯</div>
-            <h4>智能商品挖掘</h4>
-            <p>掃描 25 個關鍵字，用分數系統篩選高價值商品。≥ 7 分自動追蹤——AI Agent 幫你做「什麼值得推」的判斷。</p>
-            <span class="cap-code">coupang_discover.py</span>
-        </div>
-    </div>
-
-    <div class="section-divider"></div>
-
-    <!-- ═══ 5. Deployment ═══ -->
-    <div class="section-head gs-init">
-        <div class="section-num">5</div>
-        <h2>部署與展示</h2>
-    </div>
-    <div class="cap-grid">
-        <div class="cap-card gs-init">
-            <div class="cap-icon">🖥️</div>
-            <h4>Dashboard 視覺化</h4>
-            <p>Streamlit Dashboard 7 個頁面，整合金盒子、搜尋、文案、追蹤、比價、歷史、報表。AI Agent 從零建出完整 UI。</p>
-            <span class="cap-code">streamlit run → port 8512</span>
-        </div>
-        <div class="cap-card gs-init">
-            <div class="cap-icon">🚀</div>
-            <h4>GitHub Pages 部署</h4>
-            <p>自動建 repo、設定 Pages、推代碼。一個指令搞定，不用自己記 git 操作。</p>
-            <span class="cap-code">github.com/HSIANG-LIN/coupang-affiliate</span>
-        </div>
-    </div>
-
-    <div class="section-divider"></div>
-
-    <!-- ═══ 6. Frontend ═══ -->
-    <div class="section-head gs-init">
-        <div class="section-num">6</div>
-        <h2>前端動態效果</h2>
-    </div>
-    <div class="cap-grid">
-        <div class="cap-card gs-init">
-            <div class="cap-icon">✨</div>
-            <h4>GSAP 動畫整合</h4>
-            <p>用 GSAP ScrollTrigger 做 scroll 入場動畫、卡片瀑布、shimmer 光效。AI Agent 學會動畫庫的 API，直接寫出可生產用的前端。</p>
-            <span class="cap-code">gsap.from() + ScrollTrigger</span>
-        </div>
-        <div class="cap-card gs-init">
-            <div class="cap-icon">🎨</div>
-            <h4>響應式設計</h4>
-            <p>深色主題、mobile-ready、hover 互動效果。AI Agent 不只寫功能，也顧及使用者體驗。</p>
-            <span class="cap-code">dark mode + responsive</span>
-        </div>
-    </div>
-
-    <div class="section-divider"></div>
-
-    <!-- ═══ WORKFLOW ═══ -->
-    <div class="section-head gs-init">
-        <div class="section-num">⚡</div>
-        <h2>完整工作流程</h2>
-    </div>
-    <div class="flow gs-init">
-        <h3>從需求到上線，AI Agent 做了什麼</h3>
-        <div class="flow-steps">
-            <span class="flow-step step-blue">📄 讀 API 文件</span>
-            <span class="flow-arrow">→</span>
-            <span class="flow-step step-blue">🔐 寫 HMAC 簽章</span>
-            <span class="flow-arrow">→</span>
-            <span class="flow-step step-green">🔍 串接 API</span>
-            <span class="flow-arrow">→</span>
-            <span class="flow-step step-green">📊 建比價引擎</span>
-            <span class="flow-arrow">→</span>
-            <span class="flow-step step-orange">⏰ 設 cron 排程</span>
-            <span class="flow-arrow">→</span>
-            <span class="flow-step step-orange">✍️ 生成文案</span>
-            <span class="flow-arrow">→</span>
-            <span class="flow-step step-purple">🖥️ 建 Dashboard</span>
-            <span class="flow-arrow">→</span>
-            <span class="flow-step step-purple">🚀 部署上線</span>
-        </div>
-    </div>
-
-    <!-- ═══ TIMELINE ═══ -->
-    <div class="flow gs-init">
-        <h3>開發時間線</h3>
-        <div class="timeline">
-            <div class="tl-item gs-init">
-                <div class="tl-time">Day 1 — 上午</div>
-                <div class="tl-title">API 研究 + 串接</div>
-                <div class="tl-desc">讀 Coupang API 文件，寫 HMAC 簽章，debug 簽章路徑問題，成功拿到 goldbox 資料</div>
+        <div class="cap-grid">
+            <div class="cap-card gs-init">
+                <div class="cap-icon">🔐</div>
+                <h4>HMAC-SHA256 簽章</h4>
+                <p>Coupang API 需要 HMAC 簽章認證。AI Agent 自己讀文件、寫簽章邏輯、debug 簽章路徑問題（必須包含完整 API path），最終成功串接。</p>
+                <span class="cap-code">coupang_api.py</span>
             </div>
-            <div class="tl-item gs-init">
-                <div class="tl-time">Day 1 — 下午</div>
-                <div class="tl-title">比價引擎 + 價格追蹤</div>
-                <div class="tl-desc">建跨平台比價引擎（Coupang/momo/蝦皮/PChome），設計歷史價格追蹤系統</div>
+            <div class="cap-card gs-init">
+                <div class="cap-icon">🌐</div>
+                <h4>多平台資料抓取</h4>
+                <p>momo 用 JSON-LD 解析、蝦皮/PChome 用 Playwright 瀏覽器自動化。四個平台，三種抓取策略，AI Agent 自動選擇最佳方案。</p>
+                <span class="cap-code">coupang_compare.py</span>
             </div>
-            <div class="tl-item gs-init">
-                <div class="tl-time">Day 1 — 晚上</div>
-                <div class="tl-title">自動化排程 + 文案生成</div>
-                <div class="tl-desc">建立 4 個 cron job，寫 Threads 文案生成器，設定 Telegram 推播</div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- 2. 自動化排程 -->
+        <div class="section-head gs-init">
+            <div class="section-num">2</div>
+            <h2>自動化排程（Zero Token）</h2>
+        </div>
+        <div class="cap-grid">
+            <div class="cap-card gs-init">
+                <div class="cap-icon">⏰</div>
+                <h4>Cron Job 管理</h4>
+                <p>AI Agent 幫忙建立、排程、除錯所有 cron jobs。排程用 <code>no_agent=True</code> 模式，純腳本執行零 token 消耗。</p>
+                <span class="cap-code">no_agent=True → 零成本</span>
             </div>
-            <div class="tl-item gs-init">
-                <div class="tl-time">Day 2 — 上午</div>
-                <div class="tl-title">Dashboard + 部署</div>
-                <div class="tl-desc">建 Streamlit Dashboard（7 頁），推上 GitHub，開 GitHub Pages</div>
+            <div class="cap-card gs-init">
+                <div class="cap-icon">🔄</div>
+                <h4>失敗自動重試</h4>
+                <p>資料抓取失敗時自動 retry，API rate limit 時自動退避。AI Agent 會設計容錯機制，不是只寫 happy path。</p>
+                <span class="cap-code">retry loop + exponential backoff</span>
             </div>
-            <div class="tl-item gs-init">
-                <div class="tl-time">Day 2 — 下午</div>
-                <div class="tl-title">GSAP 美化 + 上線</div>
-                <div class="tl-desc">用 GSAP 做 landing page 動態效果，完成部署，系統正式運行</div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- 3. 資料管線 -->
+        <div class="section-head gs-init">
+            <div class="section-num">3</div>
+            <h2>資料管線與分析</h2>
+        </div>
+        <div class="cap-grid">
+            <div class="cap-card gs-init">
+                <div class="cap-icon">📊</div>
+                <h4>歷史價格追蹤</h4>
+                <p>每次掃描自動記錄價格，建立歷史資料庫。跌到歷史低點時自動觸發推播——AI Agent 會設計「什麼時候該通知人」。</p>
+                <span class="cap-code">price_history.json</span>
+            </div>
+            <div class="cap-card gs-init">
+                <div class="cap-icon">⚖️</div>
+                <h4>跨平台比價引擎</h4>
+                <p>同一商品同時比 4 個平台，找最低價。AI Agent 不只做資料抓取，還做了「決策邏輯」——什麼時候該推、什麼時候該等。</p>
+                <span class="cap-code">coupang_compare.py</span>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- 4. 內容生成 -->
+        <div class="section-head gs-init">
+            <div class="section-num">4</div>
+            <h2>內容生成</h2>
+        </div>
+        <div class="cap-grid">
+            <div class="cap-card gs-init">
+                <div class="cap-icon">✍️</div>
+                <h4>Threads 文案自動生成</h4>
+                <p>價格低點時自動生成 Simon 風格的 Threads 貼文：短句、生活場景、無驚嘆號、無 emoji。AI Agent 學習你的語氣，不是萬用模板。</p>
+                <span class="cap-code">generate_threads_post()</span>
+            </div>
+            <div class="cap-card gs-init">
+                <div class="cap-icon">🎯</div>
+                <h4>智能商品挖掘</h4>
+                <p>掃描 25 個關鍵字，用分數系統篩選高價值商品。≥ 7 分自動追蹤——AI Agent 幫你做「什麼值得推」的判斷。</p>
+                <span class="cap-code">coupang_discover.py</span>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- 5. 部署 -->
+        <div class="section-head gs-init">
+            <div class="section-num">5</div>
+            <h2>部署與展示</h2>
+        </div>
+        <div class="cap-grid">
+            <div class="cap-card gs-init">
+                <div class="cap-icon">🖥️</div>
+                <h4>Dashboard 視覺化</h4>
+                <p>Streamlit Dashboard 7 個頁面，整合金盒子、搜尋、文案、追蹤、比價、歷史、報表。AI Agent 從零建出完整 UI。</p>
+                <span class="cap-code">streamlit run → port 8512</span>
+            </div>
+            <div class="cap-card gs-init">
+                <div class="cap-icon">🚀</div>
+                <h4>GitHub Pages 部署</h4>
+                <p>自動建 repo、設定 Pages、推代碼。一個指令搞定，不用自己記 git 操作。</p>
+                <span class="cap-code">github.com/HSIANG-LIN/coupang-affiliate</span>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- 6. 前端 -->
+        <div class="section-head gs-init">
+            <div class="section-num">6</div>
+            <h2>前端動態效果</h2>
+        </div>
+        <div class="cap-grid">
+            <div class="cap-card gs-init">
+                <div class="cap-icon">✨</div>
+                <h4>GSAP 動畫整合</h4>
+                <p>用 GSAP ScrollTrigger 做 scroll 入場動畫、卡片瀑布、shimmer 光效。AI Agent 學會動畫庫的 API，直接寫出可生產用的前端。</p>
+                <span class="cap-code">gsap.from() + ScrollTrigger</span>
+            </div>
+            <div class="cap-card gs-init">
+                <div class="cap-icon">🎨</div>
+                <h4>響應式設計</h4>
+                <p>深色主題、mobile-ready、hover 互動效果。AI Agent 不只寫功能，也顧及使用者體驗。</p>
+                <span class="cap-code">dark mode + responsive</span>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- WORKFLOW -->
+        <div class="section-head gs-init">
+            <div class="section-num">⚡</div>
+            <h2>完整工作流程</h2>
+        </div>
+        <div class="flow gs-init">
+            <h3>從需求到上線，AI Agent 做了什麼</h3>
+            <div class="flow-steps">
+                <span class="flow-step step-blue">📄 讀 API 文件</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step step-blue">🔐 寫 HMAC 簽章</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step step-green">🔍 串接 API</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step step-green">📊 建比價引擎</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step step-orange">⏰ 設 cron 排程</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step step-orange">✍️ 生成文案</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step step-purple">🖥️ 建 Dashboard</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step step-purple">🚀 部署上線</span>
+            </div>
+        </div>
+
+        <!-- TIMELINE -->
+        <div class="flow gs-init">
+            <h3>開發時間線</h3>
+            <div class="timeline">
+                <div class="tl-item gs-init">
+                    <div class="tl-time">Day 1 — 上午</div>
+                    <div class="tl-title">API 研究 + 串接</div>
+                    <div class="tl-desc">讀 Coupang API 文件，寫 HMAC 簽章，debug 簽章路徑問題，成功拿到 goldbox 資料</div>
+                </div>
+                <div class="tl-item gs-init">
+                    <div class="tl-time">Day 1 — 下午</div>
+                    <div class="tl-title">比價引擎 + 價格追蹤</div>
+                    <div class="tl-desc">建跨平台比價引擎（Coupang/momo/蝦皮/PChome），設計歷史價格追蹤系統</div>
+                </div>
+                <div class="tl-item gs-init">
+                    <div class="tl-time">Day 1 — 晚上</div>
+                    <div class="tl-title">自動化排程 + 文案生成</div>
+                    <div class="tl-desc">建立 4 個 cron job，寫 Threads 文案生成器，設定 Telegram 推播</div>
+                </div>
+                <div class="tl-item gs-init">
+                    <div class="tl-time">Day 2 — 上午</div>
+                    <div class="tl-title">Dashboard + 部署</div>
+                    <div class="tl-desc">建 Streamlit Dashboard（7 頁），推上 GitHub，開 GitHub Pages</div>
+                </div>
+                <div class="tl-item gs-init">
+                    <div class="tl-time">Day 2 — 下午</div>
+                    <div class="tl-title">GSAP 美化 + 上線</div>
+                    <div class="tl-desc">用 GSAP 做 landing page 動態效果，完成部署，系統正式運行</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ 系統功能（實際可用） ═══ -->
+    <div id="system">
+        <div class="live-section gs-init">
+            <h2>⚡ 系統功能</h2>
+            <p class="live-sub">以下是實際運行中的功能，全部自動化、零人工介入。</p>
+            <div class="live-grid">
+                <a class="live-card" href="http://localhost:8512" target="_blank">
+                    <div class="live-card-icon">📊</div>
+                    <h4>Dashboard</h4>
+                    <p>金盒子・搜尋・文案・追蹤・比價・歷史・報表，7 頁整合</p>
+                    <span class="live-tag tag-run">→ 開啟 Dashboard</span>
+                </a>
+                <div class="live-card">
+                    <div class="live-card-icon">🎯</div>
+                    <h4>自動價格掃描</h4>
+                    <p>每天掃金盒子 + 追蹤商品，低點自動推播 + 生成 Threads 文案</p>
+                    <span class="live-tag tag-auto">每日 08:00</span>
+                </div>
+                <div class="live-card">
+                    <div class="live-card-icon">🔥</div>
+                    <h4>每日好康速報</h4>
+                    <p>跨平台比價 10 個熱門品項，有便宜才推播</p>
+                    <span class="live-tag tag-auto">每日 09:00</span>
+                </div>
+                <div class="live-card">
+                    <div class="live-card-icon">⚖️</div>
+                    <h4>跨平台比價</h4>
+                    <p>即時比價 酷澎 / momo / 蝦皮 / PChome，確認最低價</p>
+                    <span class="live-tag tag-run">Dashboard 內使用</span>
+                </div>
+                <div class="live-card">
+                    <div class="live-card-icon">🔍</div>
+                    <h4>高佣商品挖掘</h4>
+                    <p>掃 25 關鍵字找高分潤率商品，≥ 7 分自動追蹤</p>
+                    <span class="live-tag tag-auto">每週日 21:00</span>
+                </div>
+                <div class="live-card">
+                    <div class="live-card-icon">📈</div>
+                    <h4>每週總結</h4>
+                    <p>價格變化 + 低點 + 新挖掘 + 比價統計</p>
+                    <span class="live-tag tag-auto">每週日 20:00</span>
+                </div>
             </div>
         </div>
     </div>
@@ -557,63 +685,50 @@ gsap.registerPlugin(ScrollTrigger);
 // Hero
 gsap.from(".hero-badge", { y: 20, autoAlpha: 0, duration: 0.8, ease: "power3.out" });
 gsap.from(".hero h1", { y: 40, autoAlpha: 0, duration: 1, delay: 0.15, ease: "power3.out" });
-gsap.from(".hero-sub", { y: 20, autoAlpha: 0, duration: 0.8, delay: 0.4, ease: "power3.out" });
+gsap.from(".hero-sub", { y: 20, autoAlpha: 0, duration: 0.8, delay: 0.35, ease: "power3.out" });
+gsap.from(".hero-cta", { y: 15, autoAlpha: 0, duration: 0.7, delay: 0.5, ease: "power3.out" });
 
 // Stats
-gsap.from(".stat", {
-    y: 20, autoAlpha: 0, duration: 0.6,
-    stagger: 0.1, ease: "power2.out", delay: 0.6
-});
+gsap.from(".stat", { y: 20, autoAlpha: 0, duration: 0.6, stagger: 0.08, ease: "power2.out", delay: 0.6 });
 
 // Intro
-gsap.from(".intro", {
-    scrollTrigger: { trigger: ".intro", start: "top 85%" },
-    y: 30, autoAlpha: 0, duration: 0.8, ease: "power3.out"
-});
+gsap.from(".intro", { scrollTrigger: { trigger: ".intro", start: "top 85%" }, y: 30, autoAlpha: 0, duration: 0.8, ease: "power3.out" });
 
 // Section heads
 gsap.utils.toArray(".section-head").forEach(el => {
-    gsap.from(el, {
-        scrollTrigger: { trigger: el, start: "top 88%" },
-        x: -20, autoAlpha: 0, duration: 0.6, ease: "power2.out"
-    });
+    gsap.from(el, { scrollTrigger: { trigger: el, start: "top 88%" }, x: -20, autoAlpha: 0, duration: 0.6, ease: "power2.out" });
 });
 
-// Capability cards waterfall
+// Cap cards
 gsap.utils.toArray(".cap-card").forEach((card, i) => {
-    gsap.from(card, {
-        scrollTrigger: { trigger: card, start: "top 92%" },
-        y: 40, autoAlpha: 0, duration: 0.7,
-        delay: (i % 2) * 0.15, ease: "power3.out"
-    });
+    gsap.from(card, { scrollTrigger: { trigger: card, start: "top 92%" }, y: 40, autoAlpha: 0, duration: 0.7, delay: (i % 2) * 0.12, ease: "power3.out" });
 });
 
-// Flow diagram
-gsap.from(".flow", {
-    scrollTrigger: { trigger: ".flow", start: "top 85%" },
-    y: 40, autoAlpha: 0, duration: 0.8, ease: "power3.out"
-});
+// Flow
+gsap.from(".flow", { scrollTrigger: { trigger: ".flow", start: "top 85%" }, y: 40, autoAlpha: 0, duration: 0.8, ease: "power3.out" });
+gsap.from(".flow-step", { scrollTrigger: { trigger: ".flow-steps", start: "top 90%" }, scale: 0.8, autoAlpha: 0, duration: 0.4, stagger: 0.07, ease: "back.out(1.7)" });
 
-// Flow steps pop
-gsap.from(".flow-step", {
-    scrollTrigger: { trigger: ".flow-steps", start: "top 90%" },
-    scale: 0.8, autoAlpha: 0, duration: 0.4,
-    stagger: 0.08, ease: "back.out(1.7)"
-});
-
-// Timeline items
+// Timeline
 gsap.utils.toArray(".tl-item").forEach((item, i) => {
-    gsap.from(item, {
-        scrollTrigger: { trigger: item, start: "top 90%" },
-        x: -20, autoAlpha: 0, duration: 0.6,
-        delay: i * 0.1, ease: "power2.out"
-    });
+    gsap.from(item, { scrollTrigger: { trigger: item, start: "top 90%" }, x: -20, autoAlpha: 0, duration: 0.6, delay: i * 0.08, ease: "power2.out" });
+});
+
+// Live section
+gsap.from(".live-section", { scrollTrigger: { trigger: ".live-section", start: "top 85%" }, y: 40, autoAlpha: 0, duration: 0.8, ease: "power3.out" });
+gsap.utils.toArray(".live-card").forEach((card, i) => {
+    gsap.from(card, { scrollTrigger: { trigger: card, start: "top 92%" }, y: 30, autoAlpha: 0, duration: 0.6, delay: i * 0.08, ease: "power2.out" });
 });
 
 // Quote
-gsap.from(".quote-box", {
-    scrollTrigger: { trigger: ".quote-box", start: "top 85%" },
-    y: 30, autoAlpha: 0, duration: 0.8, ease: "power3.out"
+gsap.from(".quote-box", { scrollTrigger: { trigger: ".quote-box", start: "top 85%" }, y: 30, autoAlpha: 0, duration: 0.8, ease: "power3.out" });
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        e.preventDefault();
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
 });
 </script>
 
