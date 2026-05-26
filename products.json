@@ -1,0 +1,240 @@
+{
+  "倍潔雅衛生紙": {
+    "url": "https://www.tw.coupang.com/np/products/brand-shop?brandName=%E5%80%8D%E6%BD%94%E9%9B%85",
+    "keywords": [
+      "倍潔雅",
+      "抽取式衛生紙",
+      "150抽"
+    ],
+    "category": "衛生紙",
+    "last_price": 586,
+    "lowest_price": 586,
+    "highest_price": 1052
+  },
+  "Ariel洗衣膠囊": {
+    "url": "https://www.tw.coupang.com/np/products/brand-shop?brandName=ARIEL",
+    "keywords": [
+      "ARIEL",
+      "4D抗菌洗衣膠囊",
+      "洗衣球"
+    ],
+    "category": "洗衣用品",
+    "last_price": 219,
+    "lowest_price": 219,
+    "highest_price": 328
+  },
+  "愛康涼感衛生棉": {
+    "url": null,
+    "keywords": [
+      "愛康",
+      "涼感衛生棉",
+      "icon"
+    ],
+    "category": "衛生棉",
+    "last_price": 234,
+    "lowest_price": 199,
+    "highest_price": 239
+  },
+  "韓國零食組合": {
+    "url": null,
+    "keywords": [
+      "韓國零食",
+      "酷澎",
+      "熱銷"
+    ],
+    "category": "零食",
+    "last_price": 144,
+    "lowest_price": 144,
+    "highest_price": 299
+  },
+  "DHC維他命": {
+    "url": "https://www.tw.coupang.com/products/DHC-%E5%8F%B0%E7%81%A3%E5%85%AC%E5%8F%B8%E8%B2%A8-%E6%B4%BB%E5%8A%9B%E7%B6%9C%E5%90%88%E7%B6%AD%E4%BB%96%E5%91%BD-201474885779465",
+    "keywords": [
+      "DHC",
+      "維他命",
+      "綜合維他命"
+    ],
+    "category": "保健食品",
+    "last_price": 160,
+    "lowest_price": 160,
+    "highest_price": 199
+  },
+  "RoyalCanin貓飼料": {
+    "url": null,
+    "keywords": [
+      "Royal Canin",
+      "皇家",
+      "貓飼料",
+      "貓糧"
+    ],
+    "category": "寵物飼料",
+    "last_price": 885,
+    "lowest_price": 680,
+    "highest_price": 885
+  },
+  "INABA啾嚕肉泥": {
+    "url": null,
+    "keywords": [
+      "INABA",
+      "Ciao",
+      "啾嚕",
+      "肉泥",
+      "貓零食"
+    ],
+    "category": "寵物罐頭",
+    "last_price": 249,
+    "lowest_price": 240,
+    "highest_price": 249
+  },
+  "益生菌貓砂": {
+    "url": null,
+    "keywords": [
+      "益生菌",
+      "貓砂",
+      "豆腐砂",
+      "除臭"
+    ],
+    "category": "貓砂",
+    "last_price": 349,
+    "lowest_price": 349,
+    "highest_price": 1099
+  },
+  "Pampers幫寶適尿布": {
+    "url": null,
+    "keywords": [
+      "Pampers",
+      "幫寶適",
+      "尿布",
+      "紙尿褲"
+    ],
+    "category": "尿布",
+    "last_price": 1106,
+    "lowest_price": 899,
+    "highest_price": 1106
+  },
+  "白元除塵拖把": {
+    "url": null,
+    "keywords": [
+      "白元",
+      "除塵拖把",
+      "替換紙"
+    ],
+    "category": "除塵拖把",
+    "last_price": 169,
+    "lowest_price": 169,
+    "highest_price": 299
+  },
+  "妙潔垃圾袋": {
+    "url": null,
+    "keywords": [
+      "妙潔",
+      "垃圾袋"
+    ],
+    "category": "垃圾袋",
+    "last_price": 163,
+    "lowest_price": 163,
+    "highest_price": 189
+  },
+  "泡舒洗碗精": {
+    "url": null,
+    "keywords": [
+      "泡舒",
+      "洗碗精",
+      "植物強效"
+    ],
+    "category": "洗碗精",
+    "last_price": 142,
+    "lowest_price": 142,
+    "highest_price": 149
+  },
+  "春風廚房紙巾": {
+    "url": null,
+    "keywords": [
+      "春風",
+      "廚房紙巾"
+    ],
+    "category": "廚房紙巾",
+    "last_price": 110,
+    "lowest_price": 110,
+    "highest_price": 129
+  },
+  "貝親濕紙巾": {
+    "url": null,
+    "keywords": [
+      "貝親",
+      "濕紙巾"
+    ],
+    "category": "濕紙巾",
+    "last_price": 141,
+    "lowest_price": 141,
+    "highest_price": 199
+  },
+  "大研生醫魚油": {
+    "url": null,
+    "keywords": [
+      "大研生醫",
+      "魚油"
+    ],
+    "category": "魚油",
+    "last_price": 1620,
+    "lowest_price": 599,
+    "highest_price": 1620
+  },
+  "樂敦V葉黃素": {
+    "url": null,
+    "keywords": [
+      "樂敦",
+      "葉黃素",
+      "V金盞花"
+    ],
+    "category": "葉黃素",
+    "last_price": 1199,
+    "lowest_price": 450,
+    "highest_price": 1199
+  },
+  "威德益生菌": {
+    "url": null,
+    "keywords": [
+      "威德",
+      "益生菌"
+    ],
+    "category": "益生菌",
+    "last_price": 670,
+    "lowest_price": 399,
+    "highest_price": 670
+  },
+  "UCC濾掛咖啡": {
+    "url": null,
+    "keywords": [
+      "UCC",
+      "濾掛咖啡"
+    ],
+    "category": "咖啡",
+    "last_price": 874,
+    "lowest_price": 299,
+    "highest_price": 874
+  },
+  "辛拉麵10入": {
+    "url": null,
+    "keywords": [
+      "辛拉麵",
+      "農心",
+      "韓國泡麵"
+    ],
+    "category": "韓國泡麵",
+    "last_price": 250,
+    "lowest_price": 199,
+    "highest_price": 250
+  },
+  "天天口罩50入": {
+    "url": null,
+    "keywords": [
+      "天天口罩",
+      "醫療級"
+    ],
+    "category": "口罩",
+    "last_price": 199,
+    "lowest_price": 179,
+    "highest_price": 199
+  }
+}

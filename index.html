@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>酷澎分潤系統 | Coupang Affiliate Hub</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, #1a0a2e 0%, #0a0a0a 50%, #0a1a0a 100%);
+            border-bottom: 1px solid #222;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff6b35, #f7c948);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        .hero p {
+            color: #888;
+            font-size: 1.1rem;
+        }
+
+        /* Status Bar */
+        .status-bar {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            padding: 16px;
+            background: #111;
+            border-bottom: 1px solid #222;
+            flex-wrap: wrap;
+        }
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: #888;
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4ade80;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Grid */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #555;
+            margin-bottom: 16px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: #141414;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .card:hover {
+            border-color: #ff6b35;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 107, 53, 0.1);
+        }
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            color: #fff;
+        }
+        .card p {
+            font-size: 0.85rem;
+            color: #888;
+            line-height: 1.5;
+        }
+        .card-tag {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .tag-auto { background: #1a2e1a; color: #4ade80; }
+        .tag-tool { background: #1a1a2e; color: #60a5fa; }
+        .tag-data { background: #2e1a1a; color: #f87171; }
+
+        /* Schedule */
+        .schedule {
+            background: #141414;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 40px;
+        }
+        .schedule h3 {
+            margin-bottom: 16px;
+            color: #fff;
+        }
+        .schedule-row {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #1a1a1a;
+            gap: 16px;
+        }
+        .schedule-row:last-child { border-bottom: none; }
+        .schedule-time {
+            font-family: 'SF Mono', monospace;
+            font-size: 0.85rem;
+            color: #ff6b35;
+            min-width: 100px;
+        }
+        .schedule-name {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        .schedule-desc {
+            font-size: 0.8rem;
+            color: #666;
+            margin-left: auto;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #444;
+            font-size: 0.8rem;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        /* Tech Stack */
+        .tech {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        .tech-badge {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            background: #1a1a1a;
+            color: #888;
+            border: 1px solid #2a2a2a;
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>🔥 酷澎分潤系統</h1>
+    <p>Coupang Affiliate Automation Hub</p>
+</div>
+
+<div class="status-bar">
+    <div class="status-item">
+        <div class="status-dot"></div>
+        全自動運行中
+    </div>
+    <div class="status-item">📊 追蹤 20+ 商品</div>
+    <div class="status-item">⚡ 4 個 Cron Job</div>
+    <div class="status-item">🔗 4 平台比價</div>
+</div>
+
+<div class="container">
+
+    <div class="section-title">功能入口</div>
+    <div class="grid">
+        <a class="card" href="http://localhost:8512" target="_blank">
+            <div class="card-icon">📊</div>
+            <h3>Dashboard</h3>
+            <p>金盒子特價・商品搜尋・文案產生・價格追蹤・跨平台比價・價格歷史・分潤報表</p>
+            <span class="card-tag tag-tool">開啟 Dashboard →</span>
+        </a>
+
+        <div class="card">
+            <div class="card-icon">⚖️</div>
+            <h3>跨平台比價</h3>
+            <p>即時比價 酷澎 / momo / 蝦皮 / PChome，確認當下最低價。支援 Dashboard 操作。</p>
+            <span class="card-tag tag-auto">Dashboard 內使用</span>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🔥</div>
+            <h3>每日好康速報</h3>
+            <p>每天自動比 10 個熱門品項（衛生紙、洗衣膠囊、垃圾袋...），有便宜才推播。</p>
+            <span class="card-tag tag-auto">每日 09:00 自動</span>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🎯</div>
+            <h3>自動價格掃描</h3>
+            <p>每天掃金盒子 + 追蹤商品，價格跌到歷史低點自動推播 + 生成 Threads 文案。</p>
+            <span class="card-tag tag-auto">每日 08:00 自動</span>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🔍</div>
+            <h3>高佣商品挖掘</h3>
+            <p>掃描 25 個關鍵字，找出高分潤率消耗品。分數 ≥ 7 自動加入追蹤清單。</p>
+            <span class="card-tag tag-auto">每週日 21:00 自動</span>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📈</div>
+            <h3>每週總結</h3>
+            <p>追蹤商品價格變化、歷史低點、新挖掘商品、比價統計，一目了然。</p>
+            <span class="card-tag tag-auto">每週日 20:00 自動</span>
+        </div>
+    </div>
+
+    <div class="section-title">自動化排程</div>
+    <div class="schedule">
+        <h3>⏰ Cron Jobs</h3>
+        <div class="schedule-row">
+            <span class="schedule-time">08:00 每天</span>
+            <span class="schedule-name">🎯 自動價格掃描</span>
+            <span class="schedule-desc">金盒子 + 追蹤商品 + 低點警示 + Threads 文案</span>
+        </div>
+        <div class="schedule-row">
+            <span class="schedule-time">09:00 每天</span>
+            <span class="schedule-name">🔥 每日好康速報</span>
+            <span class="schedule-desc">跨平台比價 10 品項，便宜才推播</span>
+        </div>
+        <div class="schedule-row">
+            <span class="schedule-time">20:00 週日</span>
+            <span class="schedule-name">📈 每週總結</span>
+            <span class="schedule-desc">價格變化 + 低點 + 新挖掘 + 比價統計</span>
+        </div>
+        <div class="schedule-row">
+            <span class="schedule-time">21:00 週日</span>
+            <span class="schedule-name">🔍 高佣商品挖掘</span>
+            <span class="schedule-desc">掃 25 關鍵字 + 自動追蹤高分商品</span>
+        </div>
+    </div>
+
+    <div class="section-title">技術架構</div>
+    <div class="grid" style="grid-template-columns: 1fr;">
+        <div class="card">
+            <h3>系統架構</h3>
+            <p style="margin-top: 12px; line-height: 1.8;">
+                <strong>資料來源：</strong>Coupang Partners API・momo JSON-LD・Shopee/PChome Playwright 瀏覽器<br>
+                <strong>排程：</strong>Hermes Agent Cron (no_agent, 零 token)<br>
+                <strong>推播：</strong>Telegram 即時通知<br>
+                <strong>視覺化：</strong>Streamlit Dashboard (port 8512)<br>
+                <strong>文案：</strong>自動生成 Simon 風格 Threads 貼文
+            </p>
+            <div class="tech">
+                <span class="tech-badge">Python 3</span>
+                <span class="tech-badge">Coupang Partners API</span>
+                <span class="tech-badge">Playwright</span>
+                <span class="tech-badge">Streamlit</span>
+                <span class="tech-badge">Hermes Agent</span>
+                <span class="tech-badge">Telegram Bot</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    酷澎分潤自動化系統 · Coupang Affiliate ID: AF1508181 · Built with Hermes Agent
+</footer>
+
+</body>
+</html>

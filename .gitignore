@@ -1,0 +1,18 @@
+# 環境變數（API keys）
+.env
+
+# 資料快取（不推）
+data/
+*.log
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Streamlit
+.streamlit/
+
+# OS
+.DS_Store
+videos/

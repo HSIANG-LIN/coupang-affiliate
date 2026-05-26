@@ -1,0 +1,120 @@
+{
+  "generated_at": "2026-05-25 21:34",
+  "summary": {
+    "total_products": 22,
+    "hot_products": 2,
+    "watch_products": 0
+  },
+  "top_picks": [
+    {
+      "product": "倍潔雅衛生紙",
+      "records": 7,
+      "current_price": 889,
+      "lowest": 888,
+      "highest": 1052,
+      "avg": 988,
+      "volatility": 6.7,
+      "drop_pct": 10.0,
+      "recent_trend": "📉 下跌中",
+      "recommendation": "🔥🔥🔥 強烈推薦 — 比均價便宜 10% 以上，立刻發文！",
+      "priority": 1
+    },
+    {
+      "product": "愛康涼感衛生棉",
+      "records": 3,
+      "current_price": 199,
+      "lowest": 199,
+      "highest": 239,
+      "avg": 222,
+      "volatility": 7.6,
+      "drop_pct": 10.5,
+      "recent_trend": "📉 下跌中",
+      "recommendation": "🔥🔥🔥 強烈推薦 — 比均價便宜 10% 以上，立刻發文！",
+      "priority": 1
+    }
+  ],
+  "recommended": [
+    {
+      "product": "Ariel洗衣膠囊",
+      "records": 4,
+      "current_price": 299,
+      "lowest": 299,
+      "highest": 328,
+      "avg": 318,
+      "volatility": 3.7,
+      "drop_pct": 6.1,
+      "recent_trend": "📉 下跌中",
+      "recommendation": "✅ 推薦 — 價格不錯，可以考慮發文",
+      "priority": 2
+    },
+    {
+      "product": "DHC維他命",
+      "records": 4,
+      "current_price": 179,
+      "lowest": 179,
+      "highest": 199,
+      "avg": 192,
+      "volatility": 4.3,
+      "drop_pct": 6.5,
+      "recent_trend": "📉 下跌中",
+      "recommendation": "✅ 推薦 — 價格不錯，可以考慮發文",
+      "priority": 2
+    }
+  ],
+  "watchlist": [],
+  "hold": [],
+  "all_insights": [
+    {
+      "product": "倍潔雅衛生紙",
+      "records": 7,
+      "current_price": 889,
+      "lowest": 888,
+      "highest": 1052,
+      "avg": 988,
+      "volatility": 6.7,
+      "drop_pct": 10.0,
+      "recent_trend": "📉 下跌中",
+      "recommendation": "🔥🔥🔥 強烈推薦 — 比均價便宜 10% 以上，立刻發文！",
+      "priority": 1
+    },
+    {
+      "product": "愛康涼感衛生棉",
+      "records": 3,
+      "current_price": 199,
+      "lowest": 199,
+      "highest": 239,
+      "avg": 222,
+      "volatility": 7.6,
+      "drop_pct": 10.5,
+      "recent_trend": "📉 下跌中",
+      "recommendation": "🔥🔥🔥 強烈推薦 — 比均價便宜 10% 以上，立刻發文！",
+      "priority": 1
+    },
+    {
+      "product": "Ariel洗衣膠囊",
+      "records": 4,
+      "current_price": 299,
+      "lowest": 299,
+      "highest": 328,
+      "avg": 318,
+      "volatility": 3.7,
+      "drop_pct": 6.1,
+      "recent_trend": "📉 下跌中",
+      "recommendation": "✅ 推薦 — 價格不錯，可以考慮發文",
+      "priority": 2
+    },
+    {
+      "product": "DHC維他命",
+      "records": 4,
+      "current_price": 179,
+      "lowest": 179,
+      "highest": 199,
+      "avg": 192,
+      "volatility": 4.3,
+      "drop_pct": 6.5,
+      "recent_trend": "📉 下跌中",
+      "recommendation": "✅ 推薦 — 價格不錯，可以考慮發文",
+      "priority": 2
+    }
+  ]
+}
